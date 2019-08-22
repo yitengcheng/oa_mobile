@@ -1,29 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <NarHead />
+    <router-view class="mainContain" :style="'height:'+clientHeight"></router-view>
+    <NarBar />
   </div>
 </template>
+<script>
+import NarBar from "@/components/NarBar";
+import NarHead from "@/components/NarHead";
+export default {
+    components: { NarBar, NarHead },
+    data() {
+        return {
+            clientHeight: window.screen.height * 0.86 + "px"
+        };
+    }
+};
+</script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.mainContain {
+  display: flex;
 }
 </style>
